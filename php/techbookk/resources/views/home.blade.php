@@ -5,7 +5,7 @@
 </head>
 <body>
 @foreach ($book_image as $image)
-    <p>{{$image}}</p>
+    <a href="{{ route('details', ['id'=>$image['id']]) }}"><img src={{$image['image_link']}}></a>
 @endforeach
 </body>
 </html>

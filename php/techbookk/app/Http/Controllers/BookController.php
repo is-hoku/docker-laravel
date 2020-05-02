@@ -13,7 +13,8 @@ class BookController extends Controller
         $book = new Book;
         $book_image = $book::all();
         $book_image = json_decode($book_image, true);
-        $book_image = array_column($book_image, 'image_link');
+        #var_dump($book_image);
+        #$book_image = array_column($book_image, 'image_link');
         return view('home', compact('book_image'));
     }
     public function details() {
