@@ -16,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/{year?}','BookController@home')
-    ->where('year','\d+');
+//Route::get('/{year?}','BookController@home')
+//    ->where('year','\d+')
+//    ->name('home');
+Route::get('/','BookController@home')
+    ->name('home');
 Route::get('/details/{id}', 'BookController@details')
     ->where('id','\d+')
     ->name('details');

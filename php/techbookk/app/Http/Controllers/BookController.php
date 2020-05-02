@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Book;
 class BookController extends Controller
 {
-    public function home($year=null) {
-        if ($year==null){
-            $year = date('Y');
-        }
+    public function home() {
+//        if ($year==null){
+//            $year = date('Y');
+//        }
         $book = new Book;
         $book_image = $book::all();
         $book_image = json_decode($book_image, true);
@@ -17,6 +17,11 @@ class BookController extends Controller
         #$book_image = array_column($book_image, 'image_link');
         return view('home', compact('book_image'));
     }
-    public function details() {
+
+    public function details($id) {
+        $book = new Book;
+        $book_details = $book::where('id', $id)->get();
+        $book_details = json_decode($book_details, true)[0];
+        return view('details', compact('book_details'));
     }
 }
