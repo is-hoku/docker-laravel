@@ -24,4 +24,10 @@ class BookController extends Controller
         $book_details = json_decode($book_details, true)[0];
         return view('details', compact('book_details'));
     }
+
+    public function delete($id) {
+        $book = new Book;
+        $book::destroy($id);
+        return redirect('/');
+    }
 }

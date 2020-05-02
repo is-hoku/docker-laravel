@@ -26,6 +26,20 @@
         <th>Page Count</th>
         <th>{{ $book_details['page_count'] }}p</th>
     </tr>
+    <tr>
+        <th>Status</th>
+        @if ($book_details['status'] == 'a')
+            <th>have but haven't read</th>
+        @elseif ($book_details['status'] == 'b')
+            <th>reading</th>
+        @elseif ($book_details['status'] == 'c')
+            <th>read</th>
+        @endif
+    </tr>
 </table>
+<form method="post" action="/techbook/delete/{{$book_details['id']}}">
+    {{ csrf_field() }}
+    <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete it?')">
+</form>
 </body>
 </html>
