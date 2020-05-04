@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <title>TechBook</title>
-    <meta charset="utf-8">
-</head>
-<body>
+@extends('oya')
+@section('details')
 <p>Details of the book</p>
+<a href="{{ route('home') }}">back</a>
 <table>
     <tr>
         <th><img src={{$book_details['image_link']}}></th>
@@ -41,5 +37,4 @@
     {{ csrf_field() }}
     <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete it?')">
 </form>
-</body>
-</html>
+@endsection

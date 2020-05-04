@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <title>TechBook</title>
-    <meta charset="utf-8">
-</head>
-<body>
+@extends('oya')
+@section('home')
 @foreach ($book_image as $image)
     <a href="{{ route('details', ['id'=>$image['id']]) }}"><img src={{$image['image_link']}}></a>
 @endforeach
-</body>
-</html>
+@endsection
