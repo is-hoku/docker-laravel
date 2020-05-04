@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build:
+      php
+    container_name: php
+    volumes:
+      - ./php:/var/www/html
+      - ./php/apache/httpd.conf:/etc/apache2/apache2.conf
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+    tty: true
+    stdin_open: true
+  db:
+    build:
+      mariadb
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=nono
+    - MYSQL_PASSWORD=test
+    container_name: mariadb
+    volumes:
+      - ./mariadb/mariadb.cnf:/etc/mysql/mariadb.cnf
+    tty: true
+    stdin_open: true
