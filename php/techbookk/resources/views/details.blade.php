@@ -1,7 +1,7 @@
 @extends('oya')
 @section('details')
-<p>Details of the book</p>
-<a href="{{ route('home') }}">back</a>
+<h2>Details of the book</h2>
+
 <table>
     <tr>
         <th><img src={{$book_details['image_link']}}></th>
@@ -25,11 +25,11 @@
     <tr>
         <th>Status</th>
         @if ($book_details['status'] == 'a')
-            <th>have but haven't read</th>
+            <th>読んでいない</th>
         @elseif ($book_details['status'] == 'b')
-            <th>reading</th>
+            <th>読んでいる</th>
         @elseif ($book_details['status'] == 'c')
-            <th>read</th>
+            <th>読んだ</th>
         @endif
     </tr>
 </table>

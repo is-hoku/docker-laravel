@@ -11,9 +11,20 @@
     <link href="{{asset('/css/style.css')}}" rel="stylesheet">
 </head>
 <body>
-<div id="headsan">
-    <p>TechBook</p>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/techbook">TechBook</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/techbook">Home</a>
+            <a class="nav-item nav-link active" href="/techbook/statistics">Statistics</a>
+            <a class="nav-item nav-link active" href="/techbook/profile">Profile</a>
+            <a class="nav-item nav-link active" href="/techbook/login">Login</a>
+        </div>
+    </div>
+</nav>
 @yield('home')
 @yield('details')
 
