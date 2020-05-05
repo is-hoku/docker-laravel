@@ -27,6 +27,7 @@
 </nav>
 @yield('home')
 @yield('details')
+@yield('search')
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
