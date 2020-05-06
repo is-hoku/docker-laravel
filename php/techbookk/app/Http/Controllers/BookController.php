@@ -32,7 +32,6 @@ class BookController extends Controller
         $data = "https://www.googleapis.com/books/v1/volumes?q=".$book;
         $data = file_get_contents($data);
         $data = json_decode($data, true)['items'];
-        var_dump($data);
         return view('search', compact('data'));
     }
 }

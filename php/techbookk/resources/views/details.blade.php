@@ -33,7 +33,8 @@
         @endif
     </tr>
 </table>
-<form method="post" action="/techbook/delete/{{$book_details['id']}}">
+<!-- <form method="post" action="/techbook/delete/{{$book_details['id']}}"> -->
+<form method="get" action="{{ route('delete', ['id'=>$book_details['id']]) }}">
     {{ csrf_field() }}
     <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete it?')">
 </form>

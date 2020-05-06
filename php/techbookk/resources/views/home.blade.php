@@ -1,7 +1,7 @@
 @extends('oya')
 @section('home')
     <br>
-    <form class="form-inline" action="/techbook/search/" method="get">
+    <form class="form-inline" action="{{ route('search') }}" method="get">
         {{csrf_field()}}
         <input class="form-control mr-sm-2" type="search" placeholder="Search TechBook" aria-label="Search" name="book">
         <button class="btn btn-info" type="submit">Search</button>

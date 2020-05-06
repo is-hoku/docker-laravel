@@ -24,5 +24,9 @@ Route::get('/','BookController@home')
 Route::get('/details/{id}', 'BookController@details')
     ->where('id','\d+')
     ->name('details');
-Route::post('/delete/{id}', 'BookController@delete');
-Route::get('/search', 'BookController@search');
+Route::get('/delete/{id}', 'BookController@delete')
+    ->name('delete');
+Route::get('/search', 'BookController@search')
+    ->name('search');
+Route::post('/register', 'BookController@register')
+    ->name('register');
