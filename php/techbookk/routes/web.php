@@ -25,3 +25,4 @@ Route::get('/details/{id}', 'BookController@details')
     ->where('id','\d+')
     ->name('details');
 Route::post('/delete/{id}', 'BookController@delete');
+Route::get('/search', 'BookController@search');

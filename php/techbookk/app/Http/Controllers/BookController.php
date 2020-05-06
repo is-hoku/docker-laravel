@@ -4,17 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Book;
+
 class BookController extends Controller
 {
     public function home() {
-//        if ($year==null){
-//            $year = date('Y');
-//        }
         $book = new Book;
         $book_image = $book::all();
         $book_image = json_decode($book_image, true);
-        #var_dump($book_image);
-        #$book_image = array_column($book_image, 'image_link');
         return view('home', compact('book_image'));
     }
 
@@ -29,5 +25,14 @@ class BookController extends Controller
         $book = new Book;
         $book::destroy($id);
         return redirect('/');
+    }
+
+    public function search(Request $request) {
+        $book = $request->input('book');
+        $data = "https://www.googleapis.com/books/v1/volumes?q=".$book;
+        $data = file_get_contents($data);
+        $data = json_decode($data, true)['items'];
+        var_dump($data);
+        return view('search', compact('data'));
     }
 }
