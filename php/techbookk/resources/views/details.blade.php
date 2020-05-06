@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <th>Page Count</th>
-        <th>{{ $book_details['page_count'] }}p</th>
+        <th>{{ $book_details['page_count'] }}</th>
     </tr>
     <tr>
         <th>Status</th>
@@ -33,7 +33,7 @@
         @endif
     </tr>
 </table>
-<!-- <form method="post" action="/techbook/delete/{{$book_details['id']}}"> -->
+
 <form method="get" action="{{ route('delete', ['id'=>$book_details['id']]) }}">
     {{ csrf_field() }}
     <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete it?')">

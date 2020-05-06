@@ -29,6 +29,10 @@ class BookController extends Controller
 
     public function search(Request $request) {
         $book = $request->input('book');
+        $book = preg_replace("/( | )+/u", '+', $book);
+        if ($book==null) {
+            $book = 'laravel';
+        }
         $data1 = "https://www.googleapis.com/books/v1/volumes?q=".$book;
         $data1 = file_get_contents($data1);
         $data1 = json_decode($data1, true)['items'];
@@ -47,8 +51,12 @@ class BookController extends Controller
 
             if (isset($d['volumeInfo']['publishedDate'])) {
                 $publish_date = $d['volumeInfo']['publishedDate'];
-                if (strptime($publish_date, '%Y-%m-%d')==false) {
-                    $publish_date = $publish_date.'-1';
+                if (strptime($publish_date, '%Y-%m-%d')) {
+                    $publish_date = $publish_date;
+                } elseif (strptime($publish_date, '%Y-%m')) {
+                    $publish_date = $publish_date.'-01';
+                } elseif (strptime($publish_date, '%Y')) {
+                    $publish_date = $publish_date.'-01-01';
                 }
             } else {
                 $publish_date = null;
@@ -60,7 +68,11 @@ class BookController extends Controller
                 $page_count = null;
             }
 
-            $image_link = $d['volumeInfo']['imageLinks']['smallThumbnail'];
+            if (isset($d['volumeInfo']['imageLinks']['smallThumbnail'])) {
+                $image_link = $d['volumeInfo']['imageLinks']['smallThumbnail'];
+            } else {
+                $image_link = asset("/images/noimage.jpg");
+            }
 
             array_push($data, array($title, $author, $publish_date, $page_count, $image_link));
         }
@@ -77,6 +89,5 @@ class BookController extends Controller
         $db->image_link = $request->input('image_link');
         $db->save();
         return redirect(route('home'));
-//        return view('register', compact('book'));
     }
 }
