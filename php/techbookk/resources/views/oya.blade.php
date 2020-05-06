@@ -28,6 +28,7 @@
 @yield('home')
 @yield('details')
 @yield('search')
+@yield('register')
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -4,15 +4,16 @@
     @foreach ($data as $book)
         <table>
             <tr>
-                <th><img src={{$book['volumeInfo']['imageLinks']['smallThumbnail']}}></th>
+                <th><img src={{$book[4]}}></th>
                 <th>
-                    {{$book['volumeInfo']['title']}}
-                    <form method="post" action="{{ route('register') }}">
+                    {{$book[0]}}
+                    <form method="post" action="{{ route('register', ['title'=>$book[0], 'author'=>$book[1], 'publish_date'=>$book[2], 'page_cnt'=>$book[3], 'image_link'=>$book[4]]) }}">
                         {{csrf_field()}}
-                        <button type="button" class="btn btn-primary">登録</button>
+                        <button type="submit" class="btn btn-primary">登録</button>
                     </form>
                 </th>
             </tr>
         </table>
     @endforeach
 @endsection
+

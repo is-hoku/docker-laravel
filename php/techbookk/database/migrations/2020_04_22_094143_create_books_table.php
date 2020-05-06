@@ -16,11 +16,11 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('author');
-            $table->date('publish_date');
-            $table->integer('page_count');
+            $table->string('author')->nullable();
+            $table->date('publish_date')->nullable();
+            $table->integer('page_count')->nullable();
             $table->string('image_link');
-            $table->string('status');
+            $table->string('status')->default('a');
             $table->timestamps();
         });
     }
