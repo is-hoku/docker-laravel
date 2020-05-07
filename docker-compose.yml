@@ -21,6 +21,7 @@ services:
     - MYSQL_DATABASE=test
     - MYSQL_USER=nono
     - MYSQL_PASSWORD=test
+    - TZ=Asia/Tokyo
     container_name: mariadb
     volumes:
       - ./mariadb/mariadb.cnf:/etc/mysql/mariadb.cnf

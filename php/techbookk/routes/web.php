@@ -16,10 +16,19 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/', function(){
-    return view('welcome');
-});
-Route::get('/{year?}','BookController@home')
-    ->where('year','\d+');
+//Route::get('/{year?}','BookController@home')
+//    ->where('year','\d+')
+//    ->name('home');
+Route::get('/','BookController@home')
+    ->name('home');
 Route::get('/details/{id}', 'BookController@details')
-    ->where('id','\d+');
+    ->where('id','\d+')
+    ->name('details');
+Route::post('/delete', 'BookController@delete')
+    ->name('delete');
+Route::get('/search', 'BookController@search')
+    ->name('search');
+Route::post('/register', 'BookController@register')
+    ->name('register');
+Route::post('/update', 'BookController@update')
+    ->name('update');
