@@ -4,7 +4,7 @@
 
 <table>
     <tr>
-        <th><img src={{$book_details['image_link']}}></th>
+        <th><img src={{$book_details['image_link']}} width="128" height="158"></th>
     </tr>
     <tr>
         <th>Title</th>

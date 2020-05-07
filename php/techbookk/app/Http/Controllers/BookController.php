@@ -11,6 +11,20 @@ class BookController extends Controller
         $book = new Book;
         $book_image = $book::all();
         $book_image = json_decode($book_image, true);
+        $a = [];
+        $b = [];
+        $c = [];
+        foreach ($book_image as $book) {
+            if ($book['status']=='a') {
+                array_push($a, $book);
+            } elseif ($book['status']=='b') {
+                array_push($b, $book);
+            } else {
+                array_push($c, $book);
+            }
+        }
+        $book_image = array($a, $b, $c);
+
         return view('home', compact('book_image'));
     }
 

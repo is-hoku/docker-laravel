@@ -4,7 +4,7 @@
     @foreach ($data as $book)
         <table>
             <tr>
-                <th><img src={{$book[4]}}></th>
+                <th><img src={{$book[4]}} width="128" height="158"></th>
                 <th>
                     {{$book[0]}}
                     <form method="post" action="{{ route('register') }}">
