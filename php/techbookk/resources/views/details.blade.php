@@ -24,18 +24,44 @@
     </tr>
     <tr>
         <th>Status</th>
+
         @if ($book_details['status'] == 'a')
             <th>読んでいない</th>
+            <th>
+            <form method="post" action="{{ route('update') }}">
+                {{ csrf_field() }}
+                <input type="submit" name="status" value="読んだ">
+                <input type="submit" name="status" value="読んでいる">
+                <input type="hidden" name="id" value={{ $book_details['id'] }}>
+            </form>
+            </th>
         @elseif ($book_details['status'] == 'b')
             <th>読んでいる</th>
+            <th>
+            <form method="post" action="{{ route('update') }}">
+                {{ csrf_field() }}
+                <input type="submit" name="status" value="読んだ">
+                <input type="submit" name="status" value="読んでいない">
+                <input type="hidden" name="id" value={{ $book_details['id'] }}>
+            </form>
+            </th>
         @elseif ($book_details['status'] == 'c')
             <th>読んだ</th>
+            <th>
+            <form method="post" action="{{ route('update') }}">
+                {{ csrf_field() }}
+                <input type="submit" name="status" value="読んでいる">
+                <input type="submit" name="status" value="読んでいない">
+                <input type="hidden" name="id" value={{ $book_details['id'] }}>
+            </form>
+            </th>
         @endif
     </tr>
 </table>
 
-<form method="get" action="{{ route('delete', ['id'=>$book_details['id']]) }}">
+<form method="post" action="{{ route('delete') }}">
     {{ csrf_field() }}
     <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete it?')">
+    <input type="hidden" name="id" value={{ $book_details['id'] }}>
 </form>
 @endsection

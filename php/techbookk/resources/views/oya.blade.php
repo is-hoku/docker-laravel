@@ -20,8 +20,8 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/techbook">Home</a>
             <a class="nav-item nav-link active" href="/techbook/statistics">Statistics</a>
-            <a class="nav-item nav-link active" href="/techbook/profile">Profile</a>
-            <a class="nav-item nav-link active" href="/techbook/login">Login</a>
+{{--            <a class="nav-item nav-link active" href="/techbook/profile">Profile</a>--}}
+{{--            <a class="nav-item nav-link active" href="/techbook/login">Login</a>--}}
         </div>
     </div>
 </nav>

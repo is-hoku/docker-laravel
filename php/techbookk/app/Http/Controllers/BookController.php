@@ -35,7 +35,8 @@ class BookController extends Controller
         return view('details', compact('book_details'));
     }
 
-    public function delete($id) {
+    public function delete(Request $request) {
+        $id = $request->input('id');
         $book = new Book;
         $book::destroy($id);
         return redirect('/');
@@ -103,5 +104,20 @@ class BookController extends Controller
         $db->image_link = $request->input('image_link');
         $db->save();
         return redirect(route('home'));
+    }
+
+    public function update(Request $request) {
+        $id = $request->input('id');
+        $status = $request->input('status');
+        $book = Book::where('id', $id)->first();
+        if ($status=='読んだ') {
+            $book->status = "c";
+        } elseif ($status=='読んでいる') {
+            $book->status = "b";
+        } elseif ($status=='読んでいない') {
+            $book->status = "a";
+        }
+        $book->save();
+        return redirect('/');
     }
 }
