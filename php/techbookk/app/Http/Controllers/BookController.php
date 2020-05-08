@@ -95,7 +95,6 @@ class BookController extends Controller
     }
 
     public function register(Request $request) {
-        $book = [$request->input('title'),$request->input('author'),$request->input('publish_date')];
         $db = new Book;
         $db->title = $request->input('title');
         $db->author = $request->input('author');
